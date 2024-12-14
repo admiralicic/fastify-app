@@ -7,7 +7,7 @@ const AutoLoad = require("@fastify/autoload");
 const options = {};
 
 module.exports = async function (fastify, opts) {
-  fastify.register(Autoload, {
+  fastify.register(AutoLoad, {
     dir: path.join(__dirname, "schemas"),
     indexPattern: /^loader.js$/i,
   });

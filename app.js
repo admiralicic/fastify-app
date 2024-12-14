@@ -26,6 +26,13 @@ module.exports = async function (fastify, opts) {
   // define your routes in one of these
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, "routes"),
+    indexPattern: /.*routes(\.js|\.cjs)$/i,
+    ignorePattern: /.*\.js/,
+    autoHooksPattern: /.*hooks(\.js|\.cjs)$/i,
+    // The autoHooks flag lets you register some hooks for every routes.js file.
+    autoHooks: true,
+    // The cascadeHooks option also turns this feature on for the subdirectories
+    cascadeHooks: true,
     options: { ...opts },
   });
 };

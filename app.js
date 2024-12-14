@@ -7,9 +7,10 @@ const AutoLoad = require("@fastify/autoload");
 const options = {};
 
 module.exports = async function (fastify, opts) {
-  // Place here your custom code!
-
-  // Do not touch the following lines
+  fastify.register(Autoload, {
+    dir: path.join(__dirname, "schemas"),
+    indexPattern: /^loader.js$/i,
+  });
 
   // This loads all plugins defined in plugins
   // those should be support plugins that are reused

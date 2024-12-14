@@ -3,9 +3,6 @@
 const path = require("node:path");
 const AutoLoad = require("@fastify/autoload");
 
-// Pass --options via CLI arguments in command to enable these options.
-const options = {};
-
 module.exports = async function (fastify, opts) {
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, "schemas"),
@@ -27,7 +24,7 @@ module.exports = async function (fastify, opts) {
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, "routes"),
     indexPattern: /.*routes(\.js|\.cjs)$/i,
-    ignorePattern: /.*\.js/,
+    // ignorePattern: /.*\.js/,
     autoHooksPattern: /.*hooks(\.js|\.cjs)$/i,
     // The autoHooks flag lets you register some hooks for every routes.js file.
     autoHooks: true,
@@ -37,4 +34,4 @@ module.exports = async function (fastify, opts) {
   });
 };
 
-module.exports.options = options;
+module.exports.options = require("./configs/server-options");
